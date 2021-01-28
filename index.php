@@ -1,10 +1,7 @@
 <?php
 include('libs/write_html.php');
-$mysqli = new mysqli("localhost", "root", "", "woof");
-if ($mysqli->connect_errno) {
-    echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-	exit();
-}
+include('libs/connect.php');
+$mysqli = connect();
 $body = "<h1>Список статей</h1><ul class=\"list-group\">";
 $res = $mysqli->query("SELECT * FROM advices");
 while ($row = $res->fetch_assoc()) {
